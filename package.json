@@ -1,0 +1,29 @@
+{
+  "name": "weiapi",
+  "version": "1.0.0",
+  "description": "weiapi",
+  "main": "index.js",
+  "scripts": {
+    "server": "nodemon -w ./ start.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/weiavia/weiapi.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/weiavia/weiapi/issues"
+  },
+  "homepage": "https://github.com/weiavia/weiapi#readme",
+  "dependencies": {
+    "koa": "^2.6.2",
+    "koa-router": "^7.4.0",
+    "mongoose": "^5.4.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "@babel/register": "^7.0.0"
+  }
+}
