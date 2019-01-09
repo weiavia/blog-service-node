@@ -11,8 +11,12 @@ const Schema  = new mongoose.Schema({
     type: String,
     maxlength: 30,
   },
+  text: String,
   type: Number,
-  imgs: [String],
+  imgs: {
+    type: [String],
+    default: undefined
+  },
   updated: { type: Date, default: Date.now },
   created: { type: Date },
   thumb: String,

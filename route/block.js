@@ -1,9 +1,12 @@
 import BlockModel from '../model/block'
-const Model = new BlockModel()
+const blockMoel = new BlockModel()
 
 export default (router) => {
-  router.post('/block', (ctx, next) => {
-    
-    ctx.back({name: 'wei'})
+  router.post('/block', (ctx) => {
+    blockMoel.saveOne(ctx.request.body)
+  })
+
+  router.get('/block', (ctx) => {
+    throw new Error('block')
   })
 }

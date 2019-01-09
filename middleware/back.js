@@ -1,10 +1,12 @@
 export default (ctx, next) => {
-  ctx.back = (data = {}, error_msg = '', error_no = 0) => {
+  ctx.back = (param = {}) => {
     ctx.body = {
-      data,
-      error_no,
-      error_msg
+      data: param.data ? param.data : {},
+      errorNo: param.errorNo ? param.errorNo : 0,
+      errorMsg: param.errorMsg ? param.errorMsg : 'no error'
     }
   }
+  // 初始化back默认值
+  ctx.back()
   next()
 }
