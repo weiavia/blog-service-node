@@ -6,7 +6,7 @@ export default class Block extends Common {
     super(Model)
   }
 
-  saveOne(data) {
-    this.Model.create(data)
+  async saveOne(data) {
+    return await this.Model.create(data)
   }
 }

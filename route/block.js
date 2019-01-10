@@ -2,8 +2,9 @@ import BlockModel from '../model/block'
 const blockMoel = new BlockModel()
 
 export default (router) => {
-  router.post('/block', (ctx) => {
-    blockMoel.saveOne(ctx.request.body)
+  router.post('/block', async (ctx) => {
+    await blockMoel.saveOne(ctx.request.body)
+    console.log('fast')
   })
 
   router.get('/block', (ctx) => {
