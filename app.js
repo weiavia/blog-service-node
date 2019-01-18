@@ -5,12 +5,11 @@ import backMiddleware from './middleware/back'
 import dbMiddleware from './middleware/db'
 import corsMiddleware from './middleware/cors'
 import bodyParser from 'koa-bodyparser'
-import Exception from './exception/Exception'
+import ExceptionHandler from './class/Exception'
 
 const app = new koa()
-const exception = new Exception()
+new ExceptionHandler()
 
-app.use(() => {})
 app.use(bodyParser())
 app.use(corsMiddleware)
 app.use(backMiddleware)
@@ -20,5 +19,3 @@ useRouteMiddleware(app)
 app.listen(config.port, () => {
   console.log(`http://127.0.0.1:${config.port}`)
 })
-
-console.log(1)

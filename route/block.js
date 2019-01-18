@@ -1,13 +1,13 @@
 import BlockModel from '../model/block'
-const blockMoel = new BlockModel()
+import ParamException from '../exception/ParamException'
+let blockMoel = new BlockModel()
 
 export default (router) => {
   router.post('/block', async (ctx) => {
     await blockMoel.saveOne(ctx.request.body)
-    console.log('fast')
   })
 
   router.get('/block', (ctx) => {
-    throw new Error('block')
+    throw new ParamException({ctx})
   })
 }
