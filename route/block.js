@@ -1,13 +1,12 @@
-import BlockModel from '../model/block'
-import ParamException from '../exception/ParamException'
-let blockMoel = new BlockModel()
+import Router from 'koa-router'
+import BlockController from '../controller/Block'
 
-export default (router) => {
-  router.post('/block', async (ctx) => {
-    await blockMoel.saveOne(ctx.request.body)
-  })
+var router = new Router()
+router.prefix('/api/v1')
 
-  router.get('/block', (ctx) => {
-    throw new ParamException({ctx})
-  })
-}
+router.get('/block', (ctx) => {
+  var blockController = new BlockController(ctx)
+  blockController.getOne()
+})
+
+export default router

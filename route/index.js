@@ -1,21 +1,22 @@
-import Router from 'koa-router'
+import compose from 'koa-compose'
 import fs from 'fs'
 
-let router = new Router()
+var fileStr = fs.readdirSync(__dirname).filter((file) => {
+  return ~file.search(/^[^\.].*js$/)
+})
 
-router.prefix('/api/v1')
+var routers = []
 
-// 遍历route目录下的所有.js文件，传入router对象挂载路由
-fs.readdirSync(__dirname)
-.filter(file => ~file.search(/^[^\.].*js$/))
-.forEach(file => {
-  if(file == 'index.js')
+fileStr.forEach(file => {
+  if(file == 'index.js') {
     return
-  let route = require(__dirname + '/' + file)
-  route.default(router)
+  } else {
+    let route = require(__dirname + '/' + file)
+    routers.push(route.default.routes())
+    routers.push(route.default.allowedMethods())
+  }
 })
 
 export default (app) => {
-  app.use(router.routes())
-  app.use(router.allowedMethods())
+  app.use(compose(routers))
 }
